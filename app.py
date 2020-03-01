@@ -10,7 +10,7 @@ from flask_login import LoginManager,UserMixin,login_user,login_required,logout_
 
 app=Flask(__name__)
 app.config['SECRET_KEY']="lolly"
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///E:/myprojects/login/mylogin/database.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////home/nischaya/MyGitRepos/login_signup_page_with_database_and-Bootstrap/database.db'
 Bootstrap(app)
 db=SQLAlchemy(app)
 login_manager=LoginManager()
@@ -54,12 +54,6 @@ def login():
                 return redirect(url_for('dashboard'))
 
         return '<h1>Invalid Pass</h1>'
-
-
-
-
-        # return '<h1>' + form.username.data + ' ' +form.password.data +'</h1>'
-
     return render_template('login.html',form=form)
 
 @app.route('/signup', methods=['GET','POST'])
@@ -72,8 +66,7 @@ def signup():
         db.session.add(new_user)
         db.session.commit()
 
-        return '<h1>new user created</h1>'
-
+        return redirect(url_for('login'))
     return render_template('signup.html',form=form)
 
 
