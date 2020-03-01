@@ -10,7 +10,7 @@ from flask_login import LoginManager,UserMixin,login_user,login_required,logout_
 
 app=Flask(__name__)
 app.config['SECRET_KEY']="lolly"
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////home/nischaya/MyGitRepos/login_signup_page_with_database_and-Bootstrap/database.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
 Bootstrap(app)
 db=SQLAlchemy(app)
 login_manager=LoginManager()
