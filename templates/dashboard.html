@@ -23,9 +23,9 @@ Dashboard
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Dashboard</a></li>
+            <li><a href="{{url_for('dashboard')}}">Dashboard</a></li>
             <li><a href="#">Settings</a></li>
-            <li><a href="#">Profile</a></li>
+            <li><a href="{{url_for('edit_profile')}}">Edit Profile</a></li>
             <li><a href="{{url_for('logout')}}">Log Out</a></li>
           </ul>
           <form class="navbar-form navbar-right">
@@ -58,7 +58,19 @@ Dashboard
           </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-          <h1 class="page-header">Welcome, NAME</h1>
+          {% if user.username %}
+            <h1 class="page-header">Welcome {{user.username}}</h1>
+          {% else %}
+          <h1 class="page-header">Welcome</h1>
+          {% endif %}
+
+          {% if user.about_me %}
+          <p class="page-header">
+            <h2>About Me</h2>
+            {{user.about_me}}
+          </p>
+          {% endif %}
+
 
           <div class="row placeholders">
             <div class="col-xs-6 col-sm-3 placeholder">
